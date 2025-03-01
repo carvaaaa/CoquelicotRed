@@ -19,7 +19,7 @@ public class Player {
     public Player() {
 
         System.out.println("Im entering here");
-        playerPic = new Picture(SPAWNX,SPAWNY,"resources/pngegg.png");
+        playerPic = new Picture(SPAWNX,SPAWNY,"resources/marioRight.png");
         rectangleHit = new Rectangle(SPAWNX,SPAWNY,100,100);
 
         playerPic.draw();
@@ -39,6 +39,8 @@ public class Player {
 
         playerPic.translate(0, -10);
         rectangleHit.translate(0, -10);
+        playerPic.grow(-1,-1);
+        rectangleHit.grow(-1,-1);
         System.out.println("Im moving2");
 
     }
@@ -46,6 +48,9 @@ public class Player {
     public void moveDown() {
         playerPic.translate(0, 10);
         rectangleHit.translate(0, 10);
+
+        playerPic.grow(1,1);
+        rectangleHit.grow(1,1);
 
         System.out.println("Im moving3");
     }
