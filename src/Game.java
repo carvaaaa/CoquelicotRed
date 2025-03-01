@@ -1,6 +1,8 @@
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class Game {
+    //spawn necessary entities
+    //private Player player = new Player();
 
     public void start() {
 
@@ -9,4 +11,7 @@ public class Game {
 
     }
 
+/*    public Player getPlayer() {
+        return player;
+    }*/
 }
