@@ -13,9 +13,11 @@ public class Level {
         Player player = new Player();
 
         MyKeyboard myKeyboard = new MyKeyboard();
+        myKeyboard.setScreen(screen);
         myKeyboard.init();
         myKeyboard.setPlayer(player);
         player.setKeyboard(myKeyboard);
+
 
     }
 }

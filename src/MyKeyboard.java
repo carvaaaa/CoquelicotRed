@@ -7,9 +7,15 @@ public class MyKeyboard implements KeyboardHandler{
 
     private Keyboard keyboard;
 
+
+
+    private Screen screen;
+
     private Player player;
 
     private boolean up, down, left, right;
+
+    private int moveCounter = 0;
 
     public void setPlayer(Player player) {
         this.player = player;
@@ -40,6 +46,7 @@ public class MyKeyboard implements KeyboardHandler{
         goLeftRelease.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
         keyboard.addEventListener(goLeftRelease);
 
+
         KeyboardEvent goDown = new KeyboardEvent();
         goDown.setKey(KeyboardEvent.KEY_S);
         goDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
@@ -55,7 +62,7 @@ public class MyKeyboard implements KeyboardHandler{
         goRight.setKey(KeyboardEvent.KEY_D);
         goRight.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(goRight);
-                                                            
+
         KeyboardEvent goRightRelease = new KeyboardEvent();
         goRightRelease.setKey(KeyboardEvent.KEY_D);
         goRightRelease.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
@@ -66,136 +73,119 @@ public class MyKeyboard implements KeyboardHandler{
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
+        int speedPoint = 10;
+
 
         switch (keyboardEvent.getKey()){
             case KeyboardEvent.KEY_W:
                 up = true;
 
+                moveCounter++;
+
                 if(left){
+                    if(moveCounter >= speedPoint) {
+                        player.moveUp();
+                        player.moveLeft();
+                    }
                     player.moveUp();
                     player.moveLeft();
-                    //up = false;
-                    //left = false;
                 } else if (right){
+                    if(moveCounter >= speedPoint) {
+                        player.moveUp();
+                        player.moveRight();
+                    }
                     player.moveUp();
                     player.moveRight();
-                    //up = false;
-                    //right = false;
                 } else {
+                    if(moveCounter >= speedPoint) {
+                        player.moveUp();
+                    }
                     player.moveUp();
-                    //up = false;
                 }
-                System.out.println("keyPress, up = " + up);
+                System.out.println("keyPress, up = " + up + ", counter: " + moveCounter);
                 break;
             case KeyboardEvent.KEY_S:
                 down = true;
 
+                moveCounter++;
+
                 if(left){
+                    if(moveCounter >= speedPoint) {
+                        player.moveDown();
+                        player.moveLeft();
+                    }
                     player.moveDown();
                     player.moveLeft();
-                    //down = false;
-                    //left = false;
                 } else if (right){
+                    if(moveCounter >= speedPoint) {
+                        player.moveDown();
+                        player.moveRight();
+                    }
                     player.moveDown();
                     player.moveRight();
-                    //down = false;
-                    //right = false;
                 } else {
+                    if(moveCounter >= speedPoint) {
+                        player.moveDown();
+                    }
                     player.moveDown();
-                    //down = false;
                 }
-                System.out.println("keyPress, down = " + down);
+                System.out.println("keyPress, down = " + down + "counter: " + moveCounter);
                 break;
             case KeyboardEvent.KEY_A:
                 left = true;
 
+                moveCounter++;
+
                 if(up){
+                    if(moveCounter >= speedPoint) {
+                        player.moveUp();
+                        player.moveLeft();
+                    }
                     player.moveUp();
                     player.moveLeft();
-                    //up = false;
-                    //left = false;
                 } else if (down){
+                    if(moveCounter >= speedPoint) {
+                        player.moveDown();
+                        player.moveLeft();
+                    }
                     player.moveDown();
                     player.moveLeft();
-                    //down = false;
-                    //left = false;
                 } else {
+                    if(moveCounter >= speedPoint) {
+                        player.moveLeft();
+                    }
                     player.moveLeft();
-                    //left = false;
                 }
-                System.out.println("keyPress, left = " + left);
+                System.out.println("keyPress, left = " + left + "counter: " + moveCounter);
                 break;
             case KeyboardEvent.KEY_D:
                 right = true;
 
+                moveCounter++;
+
                 if(up){
+                    if(moveCounter >= speedPoint) {
+                        player.moveUp();
+                        player.moveRight();
+                    }
                     player.moveUp();
                     player.moveRight();
-                    //up = false;
-                    //right = false;
                 } else if (down){
+                    if(moveCounter >= speedPoint) {
+                        player.moveDown();
+                        player.moveRight();
+                    }
                     player.moveDown();
                     player.moveRight();
-                    //down = false;
-                    //right = false;
                 } else {
+                    if(moveCounter >= speedPoint) {
+                        player.moveRight();
+                    }
                     player.moveRight();
-                    //right = false;
                 }
-                System.out.println("keyPress, right = " + right);
+                System.out.println("keyPress, right = " + right + "counter: " + moveCounter);
                 break;
-
         }
-
-        /*
-        if(keyboardEvent.getKey() == KeyboardEvent.KEY_W) {
-            up = true;
-        }
-        if(keyboardEvent.getKey() == KeyboardEvent.KEY_A) {
-            left = true;
-        }
-        if(keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
-            down = true;
-        }
-        if(keyboardEvent.getKey() == KeyboardEvent.KEY_D) {
-            right = true;
-        }
-
-        if(up && left) {
-            player.moveUp();
-            player.moveLeft();
-            up = false;
-            left = false;
-        } else if(up && right) {
-            player.moveUp();
-            player.moveRight();
-            up = false;
-            right = false;
-        } else if(down && right) {
-            player.moveDown();
-            player.moveRight();
-            down = false;
-            right = false;
-        } else if(down && left) {
-            player.moveDown();
-            player.moveLeft();
-            down = false;
-            left = false;
-        } else if(up) {
-            player.moveUp();
-            up = false;
-        } else if(down) {
-            player.moveDown();
-            down = false;
-        } else if(left) {
-            player.moveLeft();
-            left = false;
-        } else if(right) {
-            player.moveRight();
-            right = false;
-        }
-
-         */
     }
 
     @Override
@@ -204,104 +194,58 @@ public class MyKeyboard implements KeyboardHandler{
         switch (keyboardEvent.getKey()){
             case KeyboardEvent.KEY_W:
                 up = false;
-                if(left){
-                    //player.moveUp();
-                    //player.moveLeft();
-                    //up = false;
+
+                moveCounter = 0;
+
+/*                if(left){
                     left = false;
                 } else if (right){
-                    //player.moveUp();
-                    //player.moveRight();
-                    //up = false;
                     right = false;
-                }
-                System.out.println("keyReleased, up = " + up);
+                }*/
+                System.out.println("keyReleased, up = " + up + "counter: " + moveCounter);
                 break;
 
             case KeyboardEvent.KEY_S:
                 down = false;
 
-                if(left){
-                    //player.moveDown();
-                    //player.moveLeft();
-                    //down = false;
+                moveCounter = 0;
+
+/*                if(left){
                     left = false;
                 } else if (right){
-                    //player.moveDown();
-                    //player.moveRight();
-                    //down = false;
                     right = false;
-                }
-                System.out.println("keyReleased, down = " + down);
+                }*/
+                System.out.println("keyReleased, down = " + down + "counter: " + moveCounter);
                 break;
             case KeyboardEvent.KEY_A:
                left = false;
 
-                if(up){
-                    //player.moveUp();
-                    //player.moveLeft();
+                moveCounter = 0;
+
+ /*               if(up){
                     up = false;
-                    //left = false;
                 } else if (down){
-                    //player.moveDown();
-                    //player.moveLeft();
                     down = false;
-                    //left = false;
-                }
-                System.out.println("keyReleased, left = " + left);
+                }*/
+                System.out.println("keyReleased, left = " + left + "counter: " + moveCounter);
                 break;
             case KeyboardEvent.KEY_D:
                 right = false;
 
-                if(up){
-                    //player.moveUp();
-                    //player.moveRight();
+                moveCounter = 0;
+
+  /*              if(up){
                     up = false;
-                    //right = false;
                 } else if (down){
-                    //player.moveDown();
-                    //player.moveRight();
                     down = false;
-                    //right = false;
-                }
-                System.out.println("keyReleased, right = " + right);
+                }*/
+                System.out.println("keyReleased, right = " + right + "counter: " + moveCounter);
                 break;
 
         }
-
-        /*        if(keyboardEvent.getKey() == KeyboardEvent.KEY_W) {
-            up = false;
-        }
-        if(keyboardEvent.getKey() == KeyboardEvent.KEY_A) {
-            left = false;
-        }
-        if(keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
-            down = false;
-        }
-        if(keyboardEvent.getKey() == KeyboardEvent.KEY_D) {
-            right = false;
-        }*/
     }
 
-
-
-    public boolean isGoingUp() {
-        return up;
-    }
-
-    public boolean isGoingDown() {
-        return down;
-    }
-
-    public boolean isGoingLeft() {
-        return left;
-    }
-
-    public boolean isGoingRight() {
-        return right;
-    }
-
-    public Keyboard getKeyboard() {
-        return keyboard;
+    public void setScreen(Screen screen) {
+        this.screen = screen;
     }
 }
