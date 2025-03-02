@@ -37,14 +37,12 @@ public class TestRectangles {
 
     public TestRectangles(){
 
-        merchant.draw();
         merchantText.setColor(Color.WHITE);
 
         for (int i = 0; i < 7 ; i++) {
 
             hitTestRec = new Rectangle((70 + (i*100)),280,80,100);
             hitTestJavaRec = new java.awt.Rectangle(hitTestRec.getX(), hitTestRec.getY(), hitTestRec.getWidth(), hitTestRec.getHeight());
-            hitTestRec.draw();
 
             hitRectsList.add(hitTestRec);
             hitJavaRectsList.add(hitTestJavaRec);

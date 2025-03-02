@@ -54,7 +54,6 @@ public class Player {
         rectangleHitJava = new java.awt.Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
 
         playerPic.draw();
-        rectangleHit.draw();
 
     }
 
@@ -90,16 +89,13 @@ public class Player {
             if(!hitTestJavaRec.intersects(rectangleHitJava) || !rectangleHitJava.intersects(hitTestJavaRec)){
                 rectangleHit.setColor(Color.BLACK);
                 hitTestRec.setColor(Color.BLACK);
-                rectangleHit.draw();
             } else {
                 rectangleHit.setColor(Color.BLUE);
                 hitTestRec.setColor(Color.ORANGE);
-                rectangleHit.draw();
             }
             if(hitTestJavaRec.contains(rectangleHitJava)){
                 rectangleHit.setColor(Color.GREEN);
                 hitTestRec.setColor(Color.RED);
-                rectangleHit.draw();
             }
 
         }
@@ -111,7 +107,6 @@ public class Player {
     public void changePic(String resource){
         playerPic.delete();
         playerPic.load(resource);
-        //playerPic.grow(-200,-270);
         playerPic.draw();
     }
 
@@ -229,23 +224,18 @@ public class Player {
         switch (counterFramesLeft % 5) {
             case 0:
                 changePic("resources/walkLeft2.png");
-                System.out.println("Walk left 2 disappeared");
                 break;
             case 1:
                 changePic("resources/standingLeft.png");
-                System.out.println("stand left disappeared");
                 break;
             case 2:
                 changePic("resources/walkingLeftSOS.png");
-                System.out.println("Walk left 1 disappeared");
                 break;
             case 3:
                 changePic("resources/walkLeft1.png");
-                System.out.println("Walk left 1 repeated code disappeared");
                 break;
             case 4:
                 changePic("resources/walkLeft2.png");
-                System.out.println("Walk left 2 repeated code disappeared");
                 break;
 
         }
@@ -282,8 +272,8 @@ public class Player {
             changeScreenRight.setLocation(768,350);
 
             if(changeScreenRight.intersects(rectangleHitJava)) {
-                screen.getBackground().load("resources/big-tree-enhanced.png");
-                currentBackground = "resources/big-tree-enhanced.png";
+                screen.getBackground().load("resources/big-tree-flipped.png");
+                currentBackground = "resources/big-tree-flipped.png";
                 screen.getBackground().draw();
 
                 rectangleHit.delete();
@@ -310,7 +300,7 @@ public class Player {
                 rectangleHit = new Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
                 rectangleHitJava = new java.awt.Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
             }
-        } else if(currentBackground.equals("resources/big-tree-enhanced.png")) {
+        } else if(currentBackground.equals("resources/big-tree-flipped.png")) {
             changeScreenRight.setLocation(10,370);
             isInCenterMap = false;
 
