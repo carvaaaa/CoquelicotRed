@@ -303,7 +303,7 @@ public class Player {
 
                 rectangleHit.delete();
                 playerPic.delete();
-                playerPic = new Picture(320,160,INITIALIMAGE);
+                playerPic = new Picture(200,90,INITIALIMAGE);
                 playerPic.grow(-200,-270);
                 playerPic.draw();
 
