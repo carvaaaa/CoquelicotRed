@@ -46,7 +46,6 @@ public class Player {
 
     public Player() {
 
-        System.out.println("Im entering here");
         playerPic = new Picture(SPAWNX,SPAWNY,INITIALIMAGE);
         playerPic.grow(-200,-270);
         rectangleHit = new Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
@@ -122,30 +121,23 @@ public class Player {
             playerPic.translate(5, 0);
             rectangleHit.translate(5, 0);
             rectangleHitJava.translate(5, 0);
-            System.out.println("Im moving1");
         }
 
         switch (counterFramesRight % 5) {
             case 0:
                 changePic("resources/walkRight2.png");
-                System.out.println("walkLeft2");
-                //counterFramesRight = 0;
                 break;
             case 1:
                 changePic("resources/standingRight.png");
-                System.out.println("standingLeft");
                 break;
             case 2:
                 changePic("resources/walkRight1.png");
-                System.out.println("walkLeft1");
                 break;
             case 3:
                 changePic("resources/walkRight1.png");
-                System.out.println("walkLeft1");
                 break;
             case 4:
                 changePic("resources/walkRight2.png");
-                System.out.println("walkLeft1");
                 break;
 
         }
@@ -225,7 +217,6 @@ public class Player {
             playerPic.translate(-5, 0);
             rectangleHit.translate(-5, 0);
             rectangleHitJava.translate(-5, 0);
-            System.out.println("Y: " + rectangleHit.getY() + " H: " + rectangleHit.getHeight());
         }
 
         switch (counterFramesLeft % 5) {
@@ -249,26 +240,45 @@ public class Player {
         }
     }
 
-    private java.awt.Rectangle changeScreenRect = new java.awt.Rectangle(0,370,50,100);
+    private java.awt.Rectangle changeScreenRect = new java.awt.Rectangle(10,370,10,100);
+    private String currentBackground = "resources/rice-field.jpeg";
 
     public void tryChangeScreen() {
-        if(changeScreenRect.intersects(rectangleHitJava)) {
-            screen.getBackground().load("resources/rice-pink-tree.jpeg");
-            screen.getBackground().draw();
 
-            rectangleHit.delete();
-            playerPic.delete();
-            playerPic = new Picture(500,120,INITIALIMAGE);
-            playerPic.grow(-200,-270);
-            playerPic.draw();
+        if(currentBackground.equals("resources/rice-pink-tree.jpeg")) {
+            changeScreenRect.setLocation(768,350);
 
-            rectangleHit = new Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
-            rectangleHitJava = new java.awt.Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
-            /*picSetLocation(playerPic, (screen.getBackground().getWidth() - playerPic.getWidth()), playerPic.getY());
-            rectSetLocation(rectangleHit, playerPic.getX(), playerPic.getY());
-            rectangleHitJava.setLocation(rectangleHit.getX(), rectangleHit.getY());
-            rectangleHit.draw();*/
+            if(changeScreenRect.intersects(rectangleHitJava)) {
+                screen.getBackground().load("resources/rice-field.jpeg");
+                currentBackground = "resources/rice-field.jpeg";
+                screen.getBackground().draw();
 
+                rectangleHit.delete();
+                playerPic.delete();
+                playerPic = new Picture(-160,120,INITIALIMAGE);
+                playerPic.grow(-200,-270);
+                playerPic.draw();
+
+                rectangleHit = new Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
+                rectangleHitJava = new java.awt.Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
+            }
+        } else if(currentBackground.equals("resources/rice-field.jpeg")) {
+            changeScreenRect.setLocation(10,370);
+
+            if(changeScreenRect.intersects(rectangleHitJava)) {
+                screen.getBackground().load("resources/rice-pink-tree.jpeg");
+                currentBackground = "resources/rice-pink-tree.jpeg";
+                screen.getBackground().draw();
+
+                rectangleHit.delete();
+                playerPic.delete();
+                playerPic = new Picture(500,120,INITIALIMAGE);
+                playerPic.grow(-200,-270);
+                playerPic.draw();
+
+                rectangleHit = new Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
+                rectangleHitJava = new java.awt.Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
+            }
         }
     }
 

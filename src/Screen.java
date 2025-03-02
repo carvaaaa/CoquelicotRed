@@ -9,8 +9,10 @@ public class Screen {
     private Picture background;
     private Rectangle screen;
     private java.awt.Rectangle screenJava;
+    private String path;
 
     public Screen(String path) {
+        this.path = path;
         screen = new Rectangle(PADDING,PADDING,768,512);
         screenJava = new java.awt.Rectangle(screen.getX(),screen.getY(),screen.getWidth(),screen.getHeight());
         this.background = new Picture(PADDING,PADDING,path);

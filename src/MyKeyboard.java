@@ -118,7 +118,6 @@ public class MyKeyboard implements KeyboardHandler{
                     }
                     player.moveUp();
                 }
-                System.out.println("keyPress, up = " + up + ", counter: " + moveCounter);
                 break;
             case KeyboardEvent.KEY_S:
                 down = true;
@@ -156,7 +155,6 @@ public class MyKeyboard implements KeyboardHandler{
                     }
                     player.moveDown();
                 }
-                System.out.println("keyPress, down = " + down + "counter: " + moveCounter);
                 break;
             case KeyboardEvent.KEY_A:
                 left = true;
@@ -194,7 +192,6 @@ public class MyKeyboard implements KeyboardHandler{
                     }
                     player.moveLeft();
                 }
-                System.out.println("keyPress, left = " + left + "counter: " + moveCounter);
                 break;
             case KeyboardEvent.KEY_D:
                 right = true;
@@ -232,7 +229,6 @@ public class MyKeyboard implements KeyboardHandler{
                     }
                     player.moveRight();
                 }
-                System.out.println("keyPress, right = " + right + "counter: " + moveCounter);
                 break;
         }
     }
@@ -246,7 +242,6 @@ public class MyKeyboard implements KeyboardHandler{
 
                 moveCounter = 0;
 
-                System.out.println("keyReleased, up = " + up + "counter: " + moveCounter);
                 break;
 
             case KeyboardEvent.KEY_S:
@@ -254,21 +249,18 @@ public class MyKeyboard implements KeyboardHandler{
 
                 moveCounter = 0;
 
-                System.out.println("keyReleased, down = " + down + "counter: " + moveCounter);
                 break;
             case KeyboardEvent.KEY_A:
                left = false;
 
                 moveCounter = 0;
 
-                System.out.println("keyReleased, left = " + left + "counter: " + moveCounter);
                 break;
             case KeyboardEvent.KEY_D:
                 right = false;
 
                 moveCounter = 0;
 
-                System.out.println("keyReleased, right = " + right + "counter: " + moveCounter);
                 break;
 
         }
