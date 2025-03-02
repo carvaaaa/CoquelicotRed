@@ -1,5 +1,9 @@
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+
+import java.util.HashMap;
+import java.util.LinkedList;
 
 public class Player {
 
@@ -26,6 +30,17 @@ public class Player {
 
     private int counterFrames = 0;
 
+    private Rectangle hitTestRec;
+    private java.awt.Rectangle hitTestJavaRec;
+    
+    private LinkedList <java.awt.Rectangle> hitJavaRectsList = new LinkedList<>();
+    private LinkedList <Rectangle> hitRectsList = new LinkedList<>();
+
+    private HashMap <Rectangle, java.awt.Rectangle> hitRectsMap = new HashMap<>();
+
+    //private Hitbox hitboxes;
+    
+
     public Player() {
 
         System.out.println("Im entering here");
@@ -35,9 +50,50 @@ public class Player {
         rectangleHitJava = new java.awt.Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
 
         playerPic.draw();
-        //rectangleHit.draw();
+        rectangleHit.draw();
+
+       // hitboxes = new Hitbox();
+       // hitboxes.movingRects(hitboxes.getHitRectsMap());
+
+
+       // hitTest(hitboxes.getHitRectsMap());
+
+
+
+
 
     }
+
+         /*
+    public void hitTest(HashMap <Rectangle, java.awt.Rectangle> hitRectsMap){
+
+        this.hitRectsMap = hitRectsMap;
+
+        for (int i = 0; i < hitboxes.getHitRectsList().size(); i++) {
+
+            hitTestRec = hitboxes.getHitRectsList().get(i);
+            hitTestJavaRec = hitboxes.getHitJavaRectsList().get(i);
+            //hitTestJavaRec = hitRectsMap.get(hitTestRec);
+
+            if(!hitTestJavaRec.intersects(rectangleHitJava) || !rectangleHitJava.intersects(hitTestJavaRec)){
+                rectangleHit.setColor(Color.BLACK);
+                hitTestRec.setColor(Color.BLACK);
+                rectangleHit.draw();
+            } else {
+                rectangleHit.setColor(Color.BLUE);
+                hitTestRec.setColor(Color.ORANGE);
+                rectangleHit.draw();
+            }
+            if(hitTestJavaRec.contains(rectangleHitJava)){
+                rectangleHit.setColor(Color.GREEN);
+                hitTestRec.setColor(Color.RED);
+                rectangleHit.draw();
+            }
+
+        }
+    }
+
+          */
 
     public void changePic(String resource){
         playerPic.delete();
@@ -48,6 +104,7 @@ public class Player {
 
     public void moveRight() {
 
+       // hitTest(hitRectsMap);
         tryChangeScreen();
 
         changePic("resources/goingRight.png");
@@ -64,6 +121,7 @@ public class Player {
 
     public void moveUp() {
 
+      //  hitTest(hitRectsMap);
         tryChangeScreen();
 
         changePic("resources/goingUp.png");
@@ -80,6 +138,8 @@ public class Player {
                 rectangleHitJava.grow(-1, -1);
                 counterVertical = 0;
             }
+
+
             counterVertical++;
         }
 
@@ -87,6 +147,7 @@ public class Player {
 
     public void moveDown() {
 
+       // hitTest(hitRectsMap);
         tryChangeScreen();
         counterFrames ++;
 
@@ -99,12 +160,15 @@ public class Player {
             rectangleHit.translate(0, 5);
             rectangleHitJava.translate(0, 5);
 
-            if(counterVertical == 1) {
+
+           if(counterVertical == 1) {
                 playerPic.grow(1,1);
                 rectangleHit.grow(1,1);
                 rectangleHitJava.grow(1, 1);
                 counterVertical = 0;
             }
+
+            
             if(counterFrames%2 == 0){
                 changePic(INITIALIMAGE);
                 counterFrames = 0;
@@ -115,6 +179,7 @@ public class Player {
 
     public void moveLeft() {
 
+       // hitTest(hitRectsMap);
         tryChangeScreen();
 
         if(screen.getScreenJavaHit().contains(rectangleHitJava) && (rectangleHitJava.getX() - 7) >= screen.getScreenJavaHit().getX()) {

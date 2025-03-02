@@ -1,6 +1,3 @@
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
-
 public class Level {
 
     private boolean levelStart;
@@ -18,6 +15,9 @@ public class Level {
         myKeyboard.setPlayer(player);
         player.setKeyboard(myKeyboard);
         player.setScreen(screen);
+
+        TestRectangles testRectangles = new TestRectangles();
+        testRectangles.movingRects(testRectangles.getHitRectsMap());
 
 
     }
