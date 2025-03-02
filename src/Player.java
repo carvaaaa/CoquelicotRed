@@ -28,7 +28,10 @@ public class Player {
 
     private final String INITIALIMAGE = "resources/standing.png";
 
-    private int counterFrames = 0;
+    private int counterFramesDown = 0;
+    private int counterFramesUP = 0;
+    private int counterFramesLeft = 0;
+    private int counterFramesRight = 0;
 
     private Rectangle hitTestRec;
     private java.awt.Rectangle hitTestJavaRec;
@@ -110,8 +113,9 @@ public class Player {
 
         hitTest(hitRectsMap);
         tryChangeScreen();
+        counterFramesRight++;
 
-        changePic("resources/goingRight.png");
+        changePic("resources/standingRight.png");
 
         if(screen.getScreenJavaHit().contains(rectangleHitJava) && (rectangleHitJava.getX() + rectangleHitJava.getWidth() + 7) <= screen.getScreenJavaHit().getX() + screen.getScreenJavaHit().getWidth()) {
 
@@ -121,14 +125,39 @@ public class Player {
             System.out.println("Im moving1");
         }
 
+        switch (counterFramesRight % 5) {
+            case 0:
+                changePic("resources/walkRight2.png");
+                System.out.println("walkLeft2");
+                //counterFramesRight = 0;
+                break;
+            case 1:
+                changePic("resources/standingRight.png");
+                System.out.println("standingLeft");
+                break;
+            case 2:
+                changePic("resources/walkRight1.png");
+                System.out.println("walkLeft1");
+                break;
+            case 3:
+                changePic("resources/walkRight1.png");
+                System.out.println("walkLeft1");
+                break;
+            case 4:
+                changePic("resources/walkRight2.png");
+                System.out.println("walkLeft1");
+                break;
+
+        }
     }
 
     public void moveUp() {
 
         hitTest(hitRectsMap);
         tryChangeScreen();
+        counterFramesUP++;
 
-        changePic("resources/goingUp.png");
+        changePic("resources/standingUp.png");
 
         if(checkLimits("up") && playerPic.getHeight()> 12) {
 
@@ -142,8 +171,10 @@ public class Player {
                 rectangleHitJava.grow(-1, -1);
                 counterVertical = 0;
             }
-
-
+            if(counterFramesUP %2 == 0) {
+                changePic("resources/walkingUp1.png");
+                counterFramesUP = 0;
+            }
             counterVertical++;
         }
 
@@ -153,7 +184,7 @@ public class Player {
 
         hitTest(hitRectsMap);
         tryChangeScreen();
-        counterFrames ++;
+        counterFramesDown++;
 
         changePic("resources/goingDown.png");
 
@@ -173,9 +204,9 @@ public class Player {
             }
 
 
-            if(counterFrames%2 == 0){
+            if(counterFramesDown %2 == 0){
                 changePic(INITIALIMAGE);
-                counterFrames = 0;
+                counterFramesDown = 0;
             }
             counterVertical++;
         }
@@ -185,7 +216,8 @@ public class Player {
 
         hitTest(hitRectsMap);
         tryChangeScreen();
-        changePic("resources/goingLeft.png");
+        counterFramesLeft++;
+        changePic("resources/standingLeft.png");
 
         if(screen.getScreenJavaHit().contains(rectangleHitJava) && (rectangleHitJava.getX() - 7) >= screen.getScreenJavaHit().getX()) {
 
@@ -196,7 +228,25 @@ public class Player {
             System.out.println("Y: " + rectangleHit.getY() + " H: " + rectangleHit.getHeight());
         }
 
+        switch (counterFramesLeft % 5) {
+            case 0:
+                changePic("resources/walkLeft2.png");
+                //counterFramesRight = 0;
+                break;
+            case 1:
+                changePic("resources/standingLeft.png");
+                break;
+            case 2:
+                changePic("resources/walkleft1.png");
+                break;
+            case 3:
+                changePic("resources/walkLeft1.png");
+                break;
+            case 4:
+                changePic("resources/walkLeft2.png");
+                break;
 
+        }
     }
 
     private java.awt.Rectangle changeScreenRect = new java.awt.Rectangle(0,370,50,100);
