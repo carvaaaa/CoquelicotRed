@@ -44,11 +44,6 @@ public class Player {
     private HashMap <Rectangle, java.awt.Rectangle> hitRectsMap = new HashMap<>();
     private boolean isInCenterMap = true;
 
-    private Flower flower;
-
-    public void setFlower(Flower flower) {
-        this.flower = flower;
-    }
 
     //private Hitbox hitboxes;
     
@@ -86,26 +81,6 @@ public class Player {
             merchText.draw();
         } else {
             merchText.delete();
-        }
-
-        java.awt.Rectangle poppyJava = flower.getPoppyjava();
-        Rectangle poppyRec = flower.getPoppy();
-        Picture poppyPic = flower.getPoppyImage();
-
-        if(rectangleHitJava.intersects(poppyJava)){
-
-            poppyRec.setColor(Color.PINK);
-            rectangleHit.setColor(Color.MAGENTA);
-            poppyRec.delete();
-            poppyRec.draw();
-            rectangleHit.delete();
-            rectangleHit.draw();
-
-            //TODO ADICIONAR IMAGEM
-            if(keyboard.isSpace()) {
-                poppyRec.delete();
-                poppyPic.delete();
-            }
         }
 
         for (int i = 0; i < hitRectsList.size(); i++) {

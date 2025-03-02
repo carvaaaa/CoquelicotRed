@@ -31,7 +31,7 @@ public class TestRectangles {
         this.merchantText = merchantText;
     }
 
-    private Text merchantText = new Text(merchant.getX()+ 40, merchant.getY()-10, "Hey boy! can ya help me?");
+    private Text merchantText = new Text(merchant.getX()+ 20, merchant.getY()-10, "How beautiful! What is it?");
 
 
 

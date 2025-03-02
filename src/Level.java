@@ -8,14 +8,11 @@ public class Level {
         //Define the screen
         Screen screen = new Screen("resources/rice-field.jpeg");
         Player player = new Player();
-        Flower flower = new Flower();
 
         MyKeyboard myKeyboard = new MyKeyboard();
         myKeyboard.setScreen(screen);
         myKeyboard.init();
         myKeyboard.setPlayer(player);
-        player.setFlower(flower);
-        flower.setPlayer(player);
         player.setKeyboard(myKeyboard);
         player.setScreen(screen);
         player.initRects();
