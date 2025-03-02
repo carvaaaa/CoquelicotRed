@@ -15,7 +15,16 @@ public class MyKeyboard implements KeyboardHandler{
 
     private TestRectangles testRects;
 
-    private boolean up, down, left, right;
+    private boolean up;
+    private boolean down;
+    private boolean left;
+    private boolean right;
+
+    public boolean isSpace() {
+        return space;
+    }
+
+    private boolean space;
 
     private int moveCounter = 0;
 
@@ -28,6 +37,16 @@ public class MyKeyboard implements KeyboardHandler{
         testRects = new TestRectangles();
 
         keyboard = new Keyboard(this);
+
+        KeyboardEvent spaceBar = new KeyboardEvent();
+        spaceBar.setKey(KeyboardEvent.KEY_SPACE);
+        spaceBar.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(spaceBar);
+
+        KeyboardEvent spaceBarRelease = new KeyboardEvent();
+        spaceBarRelease.setKey(KeyboardEvent.KEY_SPACE);
+        spaceBarRelease.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        keyboard.addEventListener(spaceBarRelease);
 
         KeyboardEvent goUp = new KeyboardEvent();
         goUp.setKey(KeyboardEvent.KEY_W);
@@ -82,6 +101,10 @@ public class MyKeyboard implements KeyboardHandler{
 
 
         switch (keyboardEvent.getKey()){
+            case KeyboardEvent.KEY_SPACE:
+                space = true;
+                break;
+
             case KeyboardEvent.KEY_W:
                 up = true;
 
@@ -237,6 +260,12 @@ public class MyKeyboard implements KeyboardHandler{
     public void keyReleased(KeyboardEvent keyboardEvent) {
 
         switch (keyboardEvent.getKey()){
+            case KeyboardEvent.KEY_SPACE:
+
+                space = false;
+
+                break;
+
             case KeyboardEvent.KEY_W:
                 up = false;
 

@@ -3,6 +3,7 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -43,6 +44,12 @@ public class Player {
     private HashMap <Rectangle, java.awt.Rectangle> hitRectsMap = new HashMap<>();
     private boolean isInCenterMap = true;
 
+    private Flower flower;
+
+    public void setFlower(Flower flower) {
+        this.flower = flower;
+    }
+
     //private Hitbox hitboxes;
     
 
@@ -79,6 +86,27 @@ public class Player {
             merchText.draw();
         } else {
             merchText.delete();
+        }
+
+        java.awt.Rectangle poppyJava = flower.getPoppyjava();
+        Rectangle poppyRec = flower.getPoppy();
+        Picture poppyPic = flower.getPoppyImage();
+
+        if(rectangleHitJava.intersects(poppyJava)){
+            System.out.println(poppyRec);
+
+            poppyRec.setColor(Color.PINK);
+            rectangleHit.setColor(Color.MAGENTA);
+            poppyRec.delete();
+            poppyRec.draw();
+            rectangleHit.delete();
+            rectangleHit.draw();
+
+            //TODO ADICIONAR IMAGEM
+            if(keyboard.isSpace()){
+                poppyRec.delete();
+                poppyPic.delete();
+            }
         }
 
         for (int i = 0; i < hitRectsList.size(); i++) {
@@ -331,6 +359,8 @@ public class Player {
                 &&
                 (rectangleHitJava.getX() - 7) >= screen.getScreenJavaHit().getX();
     }
+
+
 
     public void rectSetLocation(Rectangle rec, int newX, int newY){
             int h = rec.getHeight();
