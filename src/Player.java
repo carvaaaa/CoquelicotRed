@@ -109,7 +109,7 @@ public class Player {
     public void moveRight() {
 
         hitTest(hitRectsMap);
-        //tryChangeScreen();
+        tryChangeScreen();
 
         changePic("resources/goingRight.png");
 
@@ -126,7 +126,7 @@ public class Player {
     public void moveUp() {
 
         hitTest(hitRectsMap);
-        //tryChangeScreen();
+        tryChangeScreen();
 
         changePic("resources/goingUp.png");
 
@@ -152,7 +152,7 @@ public class Player {
     public void moveDown() {
 
         hitTest(hitRectsMap);
-        //tryChangeScreen();
+        tryChangeScreen();
         counterFrames ++;
 
         changePic("resources/goingDown.png");
@@ -184,7 +184,7 @@ public class Player {
     public void moveLeft() {
 
         hitTest(hitRectsMap);
-        //tryChangeScreen();
+        tryChangeScreen();
         changePic("resources/goingLeft.png");
 
         if(screen.getScreenJavaHit().contains(rectangleHitJava) && (rectangleHitJava.getX() - 7) >= screen.getScreenJavaHit().getX()) {
