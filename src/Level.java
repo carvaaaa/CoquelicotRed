@@ -9,7 +9,7 @@ public class Level {
         levelStart = true;
 
         //Define the screen
-        Screen screen = new Screen("resources/big-tree.jpeg");
+        Screen screen = new Screen("resources/rice-field.jpeg");
         Player player = new Player();
 
         MyKeyboard myKeyboard = new MyKeyboard();
@@ -17,6 +17,7 @@ public class Level {
         myKeyboard.init();
         myKeyboard.setPlayer(player);
         player.setKeyboard(myKeyboard);
+        player.setScreen(screen);
 
 
     }

@@ -197,11 +197,6 @@ public class MyKeyboard implements KeyboardHandler{
 
                 moveCounter = 0;
 
-/*                if(left){
-                    left = false;
-                } else if (right){
-                    right = false;
-                }*/
                 System.out.println("keyReleased, up = " + up + "counter: " + moveCounter);
                 break;
 
@@ -210,11 +205,6 @@ public class MyKeyboard implements KeyboardHandler{
 
                 moveCounter = 0;
 
-/*                if(left){
-                    left = false;
-                } else if (right){
-                    right = false;
-                }*/
                 System.out.println("keyReleased, down = " + down + "counter: " + moveCounter);
                 break;
             case KeyboardEvent.KEY_A:
@@ -222,11 +212,6 @@ public class MyKeyboard implements KeyboardHandler{
 
                 moveCounter = 0;
 
- /*               if(up){
-                    up = false;
-                } else if (down){
-                    down = false;
-                }*/
                 System.out.println("keyReleased, left = " + left + "counter: " + moveCounter);
                 break;
             case KeyboardEvent.KEY_D:
@@ -234,11 +219,6 @@ public class MyKeyboard implements KeyboardHandler{
 
                 moveCounter = 0;
 
-  /*              if(up){
-                    up = false;
-                } else if (down){
-                    down = false;
-                }*/
                 System.out.println("keyReleased, right = " + right + "counter: " + moveCounter);
                 break;
 
