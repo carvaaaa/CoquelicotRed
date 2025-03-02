@@ -41,6 +41,7 @@ public class Player {
     private LinkedList <Rectangle> hitRectsList = new LinkedList<>();
 
     private HashMap <Rectangle, java.awt.Rectangle> hitRectsMap = new HashMap<>();
+    private boolean isInCenterMap = true;
 
     //private Hitbox hitboxes;
     
@@ -76,9 +77,7 @@ public class Player {
         Text merchText =  keyboard.getTestRects().getMerchantText();
         java.awt.Rectangle merchJavaRect = keyboard.getTestRects().getMerchantJava();
 
-
-
-        if(merchJavaRect.intersects(rectangleHitJava) && rectangleHitJava.getY() >= merchJavaRect.getY() && rectangleHitJava.getHeight() <= merchJavaRect.getHeight()){
+        if(merchJavaRect.intersects(rectangleHitJava) && rectangleHitJava.getY() >= merchJavaRect.getY() && rectangleHitJava.getHeight() <= merchJavaRect.getHeight() && isInCenterMap){
             merchText.draw();
         } else {
             merchText.delete();
@@ -258,6 +257,7 @@ public class Player {
 
         if(currentBackground.equals("resources/rice-pink-tree.jpeg")) {
             changeScreenRect.setLocation(768,350);
+            isInCenterMap = false;
 
             if(changeScreenRect.intersects(rectangleHitJava)) {
                 screen.getBackground().load("resources/rice-field.jpeg");
@@ -274,6 +274,7 @@ public class Player {
                 rectangleHitJava = new java.awt.Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
             }
         } else if(currentBackground.equals("resources/rice-field.jpeg")) {
+            isInCenterMap = true;
             changeScreenRect.setLocation(10,370);
             changeScreenLeft.setLocation(768,350);
 
@@ -308,6 +309,7 @@ public class Player {
             }
         } else if(currentBackground.equals("resources/big-tree-enhanced.png")) {
             changeScreenLeft.setLocation(10,370);
+            isInCenterMap = false;
 
             if(changeScreenLeft.intersects(rectangleHitJava)) {
                 screen.getBackground().load("resources/rice-field.jpeg");
