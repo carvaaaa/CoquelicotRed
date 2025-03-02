@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="CoquelicotRed" default="build" basedir=".">
+    <!-- Define properties for directories -->
+    <property name="src.dir" value="src"/>
+    <property name="resources.dir" value="resources"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="build.dir" value="build"/>
+    <property name="jar.dir" value="dist"/>
+    <property name="main.class" value="Main"/>
+    <!-- Clean target to remove old build files -->
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${jar.dir}"/>
+    </target>
+    <!-- Compile target to compile Java source files -->
+    <target name="compile">
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${build.dir}">
+            <classpath>
+                <!-- Include libraries from the lib directory -->
+                <pathelement location="${lib.dir}/simple-graphics-0.2.1-SNAPSHOT.jar"/>
+            </classpath>
+        </javac>
+    </target>
+    <!-- Copy resources to build directory -->
+    <target name="copy-resources" depends="compile">
+        <mkdir dir="${build.dir}/resources"/>
+        <copy todir="${build.dir}/resources">
+            <fileset dir="${resources.dir}"/>
+        </copy>
+    </target>
+    <!-- Jar target to create the fat JAR file -->
+    <target name="jar" depends="copy-resources">
+        <mkdir dir="${jar.dir}"/>
+        <!-- Create a temporary directory for the combined classes -->
+        <mkdir dir="temp"/>
+        <!-- Copy compiled classes to the temp directory -->
+        <copy todir="temp">
+            <fileset dir="${build.dir}"/>
+        </copy>
+        <!-- Unzip the library JAR to the temp directory -->
+        <unzip src="${lib.dir}/simple-graphics-0.2.1-SNAPSHOT.jar" dest="temp"/>
+        <!-- Create the final JAR file -->
+        <jar destfile="${jar.dir}/CoquelicotRed.jar" basedir="temp">
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}"/>
+            </manifest>
+        </jar>
+        <!-- Clean up the temporary directory -->
+        <delete dir="temp"/>
+    </target>
+    <!-- Build target that depends on the jar target -->
+    <target name="build" depends="jar">
+        <echo message="Build completed successfully."/>
+    </target>
+</project>

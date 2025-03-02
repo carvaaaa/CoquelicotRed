@@ -18,7 +18,7 @@ public class TestRectangles {
     public TestRectangles(){
         for (int i = 0; i < 7 ; i++) {
 
-            hitTestRec = new Rectangle((15 + (i*100)),370,80,120);
+            hitTestRec = new Rectangle((70 + (i*100)),280,80,100);
             hitTestJavaRec = new java.awt.Rectangle(hitTestRec.getX(), hitTestRec.getY(), hitTestRec.getWidth(), hitTestRec.getHeight());
             hitTestRec.draw();
 
@@ -41,7 +41,7 @@ public class TestRectangles {
             hitTestRec = hitRectsList.get(i);
             hitTestJavaRec = hitJavaRectsList.get(i);
 
-            for (int j = 0; j < 35; j++) {
+            for (int j = 0; j < 20; j++) {
                 growthCounter++;
                 hitTestRec.translate(xmove,ymove);
                 hitTestJavaRec.translate(xmove, ymove);

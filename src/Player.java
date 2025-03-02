@@ -52,27 +52,30 @@ public class Player {
         playerPic.draw();
         rectangleHit.draw();
 
-       // hitboxes = new Hitbox();
-       // hitboxes.movingRects(hitboxes.getHitRectsMap());
-
-
-       // hitTest(hitboxes.getHitRectsMap());
-
-
-
-
 
     }
 
-         /*
-    public void hitTest(HashMap <Rectangle, java.awt.Rectangle> hitRectsMap){
+
+    public void initRects(){
+
+        hitRectsList = keyboard.getTestRects().getHitRectsList();
+        hitJavaRectsList = keyboard.getTestRects().getHitJavaRectsList();
+        hitRectsMap = keyboard.getTestRects().getHitRectsMap();
+
+        hitTest(hitRectsMap);
+    }
+
+
+
+
+    public boolean hitTest(HashMap <Rectangle, java.awt.Rectangle> hitRectsMap){
 
         this.hitRectsMap = hitRectsMap;
 
-        for (int i = 0; i < hitboxes.getHitRectsList().size(); i++) {
+        for (int i = 0; i < hitRectsList.size(); i++) {
 
-            hitTestRec = hitboxes.getHitRectsList().get(i);
-            hitTestJavaRec = hitboxes.getHitJavaRectsList().get(i);
+            hitTestRec = hitRectsList.get(i);
+            hitTestJavaRec = hitJavaRectsList.get(i);
             //hitTestJavaRec = hitRectsMap.get(hitTestRec);
 
             if(!hitTestJavaRec.intersects(rectangleHitJava) || !rectangleHitJava.intersects(hitTestJavaRec)){
@@ -91,9 +94,10 @@ public class Player {
             }
 
         }
+        return false;
     }
 
-          */
+
 
     public void changePic(String resource){
         playerPic.delete();
@@ -104,8 +108,8 @@ public class Player {
 
     public void moveRight() {
 
-       // hitTest(hitRectsMap);
-        tryChangeScreen();
+        hitTest(hitRectsMap);
+        //tryChangeScreen();
 
         changePic("resources/goingRight.png");
 
@@ -121,8 +125,8 @@ public class Player {
 
     public void moveUp() {
 
-      //  hitTest(hitRectsMap);
-        tryChangeScreen();
+        hitTest(hitRectsMap);
+        //tryChangeScreen();
 
         changePic("resources/goingUp.png");
 
@@ -147,8 +151,8 @@ public class Player {
 
     public void moveDown() {
 
-       // hitTest(hitRectsMap);
-        tryChangeScreen();
+        hitTest(hitRectsMap);
+        //tryChangeScreen();
         counterFrames ++;
 
         changePic("resources/goingDown.png");
@@ -168,7 +172,7 @@ public class Player {
                 counterVertical = 0;
             }
 
-            
+
             if(counterFrames%2 == 0){
                 changePic(INITIALIMAGE);
                 counterFrames = 0;
@@ -179,8 +183,9 @@ public class Player {
 
     public void moveLeft() {
 
-       // hitTest(hitRectsMap);
-        tryChangeScreen();
+        hitTest(hitRectsMap);
+        //tryChangeScreen();
+        changePic("resources/goingLeft.png");
 
         if(screen.getScreenJavaHit().contains(rectangleHitJava) && (rectangleHitJava.getX() - 7) >= screen.getScreenJavaHit().getX()) {
 
@@ -191,7 +196,6 @@ public class Player {
             System.out.println("Y: " + rectangleHit.getY() + " H: " + rectangleHit.getHeight());
         }
 
-        changePic("resources/goingLeft.png");
 
     }
 

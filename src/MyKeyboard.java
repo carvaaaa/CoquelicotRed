@@ -13,6 +13,8 @@ public class MyKeyboard implements KeyboardHandler{
 
     private Player player;
 
+    private TestRectangles testRects;
+
     private boolean up, down, left, right;
 
     private int moveCounter = 0;
@@ -22,6 +24,8 @@ public class MyKeyboard implements KeyboardHandler{
     }
 
     public void init() {
+
+        testRects = new TestRectangles();
 
         keyboard = new Keyboard(this);
 
@@ -227,5 +231,9 @@ public class MyKeyboard implements KeyboardHandler{
 
     public void setScreen(Screen screen) {
         this.screen = screen;
+    }
+
+    public TestRectangles getTestRects() {
+        return testRects;
     }
 }

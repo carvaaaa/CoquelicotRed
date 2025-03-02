@@ -15,6 +15,7 @@ public class Level {
         myKeyboard.setPlayer(player);
         player.setKeyboard(myKeyboard);
         player.setScreen(screen);
+        player.initRects();
 
         TestRectangles testRectangles = new TestRectangles();
         testRectangles.movingRects(testRectangles.getHitRectsMap());
