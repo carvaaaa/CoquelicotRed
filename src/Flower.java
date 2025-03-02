@@ -9,10 +9,13 @@ public class Flower {
     private Picture poppyImage = new Picture(10, 400,FLOWERPATH);
     private Rectangle poppy = new Rectangle(poppyImage.getX(), poppyImage.getY(), poppyImage.getWidth(), poppyImage.getHeight());
     private java.awt.Rectangle poppyjava = new java.awt.Rectangle(poppyImage.getX(), poppyImage.getY(), poppyImage.getWidth(), poppyImage.getHeight());
-
-
+    private Player player;
     private LinkedList <Picture> poppyList = new LinkedList<>();
 
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 
 
     public Flower(){
@@ -27,7 +30,6 @@ public class Flower {
             poppyjava = new java.awt.Rectangle(poppyImage.getX(), poppyImage.getY(), poppyImage.getWidth(), poppyImage.getHeight());
 
             poppyImage.draw();
-            poppy.draw();
 
         }
     }

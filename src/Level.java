@@ -15,6 +15,7 @@ public class Level {
         myKeyboard.init();
         myKeyboard.setPlayer(player);
         player.setFlower(flower);
+        flower.setPlayer(player);
         player.setKeyboard(myKeyboard);
         player.setScreen(screen);
         player.initRects();

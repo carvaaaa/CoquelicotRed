@@ -93,7 +93,6 @@ public class Player {
         Picture poppyPic = flower.getPoppyImage();
 
         if(rectangleHitJava.intersects(poppyJava)){
-            System.out.println(poppyRec);
 
             poppyRec.setColor(Color.PINK);
             rectangleHit.setColor(Color.MAGENTA);
@@ -103,7 +102,7 @@ public class Player {
             rectangleHit.draw();
 
             //TODO ADICIONAR IMAGEM
-            if(keyboard.isSpace()){
+            if(keyboard.isSpace()) {
                 poppyRec.delete();
                 poppyPic.delete();
             }
@@ -375,5 +374,9 @@ public class Player {
         pic = new Picture(newX, newY,INITIALIMAGE);
         pic.grow(-200,-270);
         pic.draw();
+    }
+
+    public String getCurrentBackground() {
+        return currentBackground;
     }
 }

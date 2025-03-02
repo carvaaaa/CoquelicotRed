@@ -20,11 +20,11 @@ public class MyKeyboard implements KeyboardHandler{
     private boolean left;
     private boolean right;
 
+    private boolean space;
+
     public boolean isSpace() {
         return space;
     }
-
-    private boolean space;
 
     private int moveCounter = 0;
 
