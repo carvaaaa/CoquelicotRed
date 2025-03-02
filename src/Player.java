@@ -159,7 +159,7 @@ public class Player {
 
         changePic("resources/standingUp.png");
 
-        if(checkLimits("up") && playerPic.getHeight()> 12) {
+        if(playerPic.getHeight()> 12) {
 
             playerPic.translate(0, -5);
             rectangleHit.translate(0, -5);
@@ -188,7 +188,7 @@ public class Player {
 
         changePic("resources/goingDown.png");
 
-        if(checkLimits("down")) {
+        if(checkLimits()) {
 
 
             playerPic.translate(0, 5);
@@ -272,24 +272,15 @@ public class Player {
         }
     }
 
-    public boolean checkLimits(String direction) {
-        if(direction.equals("down")) {
-            return screen.getScreenJavaHit().contains(rectangleHitJava)
-                    &&
-                    (rectangleHitJava.getY() + rectangleHitJava.getHeight() + 7) <= screen.getScreenJavaHit().getY() + screen.getScreenJavaHit().getHeight()
-                    &&
-                    (rectangleHitJava.getX() + rectangleHitJava.getWidth() + 7) <= screen.getScreenJavaHit().getX() + screen.getScreenJavaHit().getWidth()
-                    &&
-                    (rectangleHitJava.getX() - 7) >= screen.getScreenJavaHit().getX();
-        } else {
-            return screen.getScreenJavaHit().contains(rectangleHitJava)
-                    &&
-                    (rectangleHitJava.getY() - 7) >= screen.getScreenJavaHit().getY()
-                    &&
-                    (rectangleHitJava.getX() + rectangleHitJava.getWidth() + 7) <= screen.getScreenJavaHit().getX() + screen.getScreenJavaHit().getWidth()
-                    &&
-                    (rectangleHitJava.getX() - 7) >= screen.getScreenJavaHit().getX();
-        }
+    public boolean checkLimits() {
+
+        return screen.getScreenJavaHit().contains(rectangleHitJava)
+                &&
+                (rectangleHitJava.getY() + rectangleHitJava.getHeight() + 7) <= screen.getScreenJavaHit().getY() + screen.getScreenJavaHit().getHeight()
+                &&
+                (rectangleHitJava.getX() + rectangleHitJava.getWidth() + 7) <= screen.getScreenJavaHit().getX() + screen.getScreenJavaHit().getWidth()
+                &&
+                (rectangleHitJava.getX() - 7) >= screen.getScreenJavaHit().getX();
     }
 
     public void rectSetLocation(Rectangle rec, int newX, int newY){
