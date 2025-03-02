@@ -22,10 +22,14 @@ public class Player {
     private Rectangle rectangleHit;
     private java.awt.Rectangle rectangleHitJava;
 
+    private final String INITIALIMAGE = "resources/standing.png";
+
+    private int counterFrames = 0;
+
     public Player() {
 
         System.out.println("Im entering here");
-        playerPic = new Picture(SPAWNX,SPAWNY,"resources/standing.png");
+        playerPic = new Picture(SPAWNX,SPAWNY,INITIALIMAGE);
         playerPic.grow(-200,-270);
         rectangleHit = new Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
         rectangleHitJava = new java.awt.Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
@@ -84,6 +88,7 @@ public class Player {
     public void moveDown() {
 
         tryChangeScreen();
+        counterFrames ++;
 
         changePic("resources/goingDown.png");
 
@@ -99,6 +104,10 @@ public class Player {
                 rectangleHit.grow(1,1);
                 rectangleHitJava.grow(1, 1);
                 counterVertical = 0;
+            }
+            if(counterFrames%2 == 0){
+                changePic(INITIALIMAGE);
+                counterFrames = 0;
             }
             counterVertical++;
         }
@@ -127,6 +136,20 @@ public class Player {
         if(changeScreenRect.intersects(rectangleHitJava)) {
             screen.getBackground().load("resources/rice-pink-tree.jpeg");
             screen.getBackground().draw();
+
+            rectangleHit.delete();
+            playerPic.delete();
+            playerPic = new Picture(500,120,INITIALIMAGE);
+            playerPic.grow(-200,-270);
+            playerPic.draw();
+
+            rectangleHit = new Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
+            rectangleHitJava = new java.awt.Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
+            /*picSetLocation(playerPic, (screen.getBackground().getWidth() - playerPic.getWidth()), playerPic.getY());
+            rectSetLocation(rectangleHit, playerPic.getX(), playerPic.getY());
+            rectangleHitJava.setLocation(rectangleHit.getX(), rectangleHit.getY());
+            rectangleHit.draw();*/
+
         }
     }
 
@@ -148,5 +171,20 @@ public class Player {
                     &&
                     (rectangleHitJava.getX() - 7) >= screen.getScreenJavaHit().getX();
         }
+    }
+
+    public void rectSetLocation(Rectangle rec, int newX, int newY){
+            int h = rec.getHeight();
+            int w = rec.getWidth();
+            rec = new Rectangle(newX, newY, w, h);
+    }
+
+    public void picSetLocation(Picture pic, int newX, int newY){
+        int h = pic.getHeight();
+        int w = pic.getWidth();
+        pic.delete();
+        pic = new Picture(newX, newY,INITIALIMAGE);
+        pic.grow(-200,-270);
+        pic.draw();
     }
 }
