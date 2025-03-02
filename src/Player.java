@@ -1,5 +1,6 @@
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.util.HashMap;
@@ -68,11 +69,20 @@ public class Player {
     }
 
 
-
-
     public boolean hitTest(HashMap <Rectangle, java.awt.Rectangle> hitRectsMap){
 
         this.hitRectsMap = hitRectsMap;
+
+        Text merchText =  keyboard.getTestRects().getMerchantText();
+        java.awt.Rectangle merchJavaRect = keyboard.getTestRects().getMerchantJava();
+
+
+
+        if(merchJavaRect.intersects(rectangleHitJava) && rectangleHitJava.getY() >= merchJavaRect.getY() && rectangleHitJava.getHeight() <= merchJavaRect.getHeight()){
+            merchText.draw();
+        } else {
+            merchText.delete();
+        }
 
         for (int i = 0; i < hitRectsList.size(); i++) {
 

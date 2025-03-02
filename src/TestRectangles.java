@@ -1,4 +1,6 @@
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -13,9 +15,31 @@ public class TestRectangles {
 
     private HashMap <Rectangle, java.awt.Rectangle> hitRectsMap = new HashMap<>();
 
+    private Rectangle merchant = new Rectangle(200,360,60,80);
+
+    public java.awt.Rectangle getMerchantJava() {
+        return merchantJava;
+    }
+
+    private java.awt.Rectangle merchantJava = new java.awt.Rectangle(merchant.getX(),merchant.getY(), merchant.getWidth(), merchant.getHeight());
+
+    public Text getMerchantText() {
+        return merchantText;
+    }
+
+    public void setMerchantText(Text merchantText) {
+        this.merchantText = merchantText;
+    }
+
+    private Text merchantText = new Text(merchant.getX()+ 40, merchant.getY()-10, "Hey boy! can ya help me?");
+
 
 
     public TestRectangles(){
+
+        merchant.draw();
+        merchantText.setColor(Color.WHITE);
+
         for (int i = 0; i < 7 ; i++) {
 
             hitTestRec = new Rectangle((70 + (i*100)),280,80,100);
@@ -27,8 +51,6 @@ public class TestRectangles {
             hitRectsMap.put(hitTestRec, hitTestJavaRec);
 
         }
-
-
     }
 
     public void movingRects(HashMap<Rectangle, java.awt.Rectangle> hitRectsMap){
@@ -100,6 +122,8 @@ public class TestRectangles {
     public void setHitRectsMap(HashMap<Rectangle, java.awt.Rectangle> hitRectsMap) {
         this.hitRectsMap = hitRectsMap;
     }
+
+
 
 
 }
