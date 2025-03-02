@@ -251,6 +251,7 @@ public class Player {
     }
 
     private java.awt.Rectangle changeScreenRect = new java.awt.Rectangle(10,370,10,100);
+    private java.awt.Rectangle changeScreenLeft = new java.awt.Rectangle(768,350,10,100);
     private String currentBackground = "resources/rice-field.jpeg";
 
     public void tryChangeScreen() {
@@ -274,10 +275,43 @@ public class Player {
             }
         } else if(currentBackground.equals("resources/rice-field.jpeg")) {
             changeScreenRect.setLocation(10,370);
+            changeScreenLeft.setLocation(768,350);
+
+            if(changeScreenLeft.intersects(rectangleHitJava)) {
+                screen.getBackground().load("resources/big-tree-enhanced.png");
+                currentBackground = "resources/big-tree-enhanced.png";
+                screen.getBackground().draw();
+
+                rectangleHit.delete();
+                playerPic.delete();
+                playerPic = new Picture(-160,120,INITIALIMAGE);
+                playerPic.grow(-200,-270);
+                playerPic.draw();
+
+                rectangleHit = new Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
+                rectangleHitJava = new java.awt.Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
+            }
 
             if(changeScreenRect.intersects(rectangleHitJava)) {
                 screen.getBackground().load("resources/rice-pink-tree.jpeg");
                 currentBackground = "resources/rice-pink-tree.jpeg";
+                screen.getBackground().draw();
+
+                rectangleHit.delete();
+                playerPic.delete();
+                playerPic = new Picture(500,120,INITIALIMAGE);
+                playerPic.grow(-200,-270);
+                playerPic.draw();
+
+                rectangleHit = new Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
+                rectangleHitJava = new java.awt.Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
+            }
+        } else if(currentBackground.equals("resources/big-tree-enhanced.png")) {
+            changeScreenLeft.setLocation(10,370);
+
+            if(changeScreenLeft.intersects(rectangleHitJava)) {
+                screen.getBackground().load("resources/rice-field.jpeg");
+                currentBackground = "resources/rice-field.jpeg";
                 screen.getBackground().draw();
 
                 rectangleHit.delete();
