@@ -229,19 +229,23 @@ public class Player {
         switch (counterFramesLeft % 5) {
             case 0:
                 changePic("resources/walkLeft2.png");
-                //counterFramesRight = 0;
+                System.out.println("Walk left 2 disappeared");
                 break;
             case 1:
                 changePic("resources/standingLeft.png");
+                System.out.println("stand left disappeared");
                 break;
             case 2:
-                changePic("resources/walkleft1.png");
+                changePic("resources/walkingLeftSOS.png");
+                System.out.println("Walk left 1 disappeared");
                 break;
             case 3:
                 changePic("resources/walkLeft1.png");
+                System.out.println("Walk left 1 repeated code disappeared");
                 break;
             case 4:
                 changePic("resources/walkLeft2.png");
+                System.out.println("Walk left 2 repeated code disappeared");
                 break;
 
         }
