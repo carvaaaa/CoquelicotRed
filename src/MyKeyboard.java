@@ -78,6 +78,7 @@ public class MyKeyboard implements KeyboardHandler{
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
         int speedPoint = 10;
+        int sprintPoint = 20;
 
 
         switch (keyboardEvent.getKey()){
@@ -88,6 +89,10 @@ public class MyKeyboard implements KeyboardHandler{
 
                 if(left){
                     if(moveCounter >= speedPoint) {
+                        if(moveCounter >= sprintPoint) {
+                            player.moveUp();
+                            player.moveLeft();
+                        }
                         player.moveUp();
                         player.moveLeft();
                     }
@@ -95,6 +100,10 @@ public class MyKeyboard implements KeyboardHandler{
                     player.moveLeft();
                 } else if (right){
                     if(moveCounter >= speedPoint) {
+                        if(moveCounter >= sprintPoint) {
+                            player.moveUp();
+                            player.moveRight();
+                        }
                         player.moveUp();
                         player.moveRight();
                     }
@@ -102,6 +111,9 @@ public class MyKeyboard implements KeyboardHandler{
                     player.moveRight();
                 } else {
                     if(moveCounter >= speedPoint) {
+                        if(moveCounter >= sprintPoint) {
+                            player.moveUp();
+                        }
                         player.moveUp();
                     }
                     player.moveUp();
@@ -115,6 +127,10 @@ public class MyKeyboard implements KeyboardHandler{
 
                 if(left){
                     if(moveCounter >= speedPoint) {
+                        if(moveCounter >= sprintPoint) {
+                            player.moveDown();
+                            player.moveLeft();
+                        }
                         player.moveDown();
                         player.moveLeft();
                     }
@@ -122,6 +138,10 @@ public class MyKeyboard implements KeyboardHandler{
                     player.moveLeft();
                 } else if (right){
                     if(moveCounter >= speedPoint) {
+                        if(moveCounter >= sprintPoint) {
+                            player.moveDown();
+                            player.moveRight();
+                        }
                         player.moveDown();
                         player.moveRight();
                     }
@@ -129,6 +149,9 @@ public class MyKeyboard implements KeyboardHandler{
                     player.moveRight();
                 } else {
                     if(moveCounter >= speedPoint) {
+                        if(moveCounter >= sprintPoint) {
+                            player.moveDown();
+                        }
                         player.moveDown();
                     }
                     player.moveDown();
@@ -142,6 +165,10 @@ public class MyKeyboard implements KeyboardHandler{
 
                 if(up){
                     if(moveCounter >= speedPoint) {
+                        if(moveCounter >= sprintPoint) {
+                            player.moveUp();
+                            player.moveLeft();
+                        }
                         player.moveUp();
                         player.moveLeft();
                     }
@@ -149,6 +176,10 @@ public class MyKeyboard implements KeyboardHandler{
                     player.moveLeft();
                 } else if (down){
                     if(moveCounter >= speedPoint) {
+                        if(moveCounter >= sprintPoint) {
+                            player.moveDown();
+                            player.moveLeft();
+                        }
                         player.moveDown();
                         player.moveLeft();
                     }
@@ -156,6 +187,9 @@ public class MyKeyboard implements KeyboardHandler{
                     player.moveLeft();
                 } else {
                     if(moveCounter >= speedPoint) {
+                        if(moveCounter >= sprintPoint) {
+                            player.moveLeft();
+                        }
                         player.moveLeft();
                     }
                     player.moveLeft();
@@ -169,6 +203,10 @@ public class MyKeyboard implements KeyboardHandler{
 
                 if(up){
                     if(moveCounter >= speedPoint) {
+                        if(moveCounter >= sprintPoint) {
+                            player.moveUp();
+                            player.moveRight();
+                        }
                         player.moveUp();
                         player.moveRight();
                     }
@@ -176,6 +214,10 @@ public class MyKeyboard implements KeyboardHandler{
                     player.moveRight();
                 } else if (down){
                     if(moveCounter >= speedPoint) {
+                        if(moveCounter >= sprintPoint) {
+                            player.moveDown();
+                            player.moveRight();
+                        }
                         player.moveDown();
                         player.moveRight();
                     }
@@ -183,6 +225,9 @@ public class MyKeyboard implements KeyboardHandler{
                     player.moveRight();
                 } else {
                     if(moveCounter >= speedPoint) {
+                        if(moveCounter >= sprintPoint) {
+                            player.moveRight();
+                        }
                         player.moveRight();
                     }
                     player.moveRight();

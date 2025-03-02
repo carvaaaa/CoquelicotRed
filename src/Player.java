@@ -115,7 +115,7 @@ public class Player {
         tryChangeScreen();
         counterFramesRight++;
 
-        changePic("resources/walkRight1.png");
+        changePic("resources/standingRight.png");
 
         if(screen.getScreenJavaHit().contains(rectangleHitJava) && (rectangleHitJava.getX() + rectangleHitJava.getWidth() + 7) <= screen.getScreenJavaHit().getX() + screen.getScreenJavaHit().getWidth()) {
 
@@ -124,9 +124,30 @@ public class Player {
             rectangleHitJava.translate(5, 0);
             System.out.println("Im moving1");
         }
-        if(counterFramesRight %2 == 0){
-            changePic("resources/standingRight.png");
-            counterFramesRight = 0;
+
+        switch (counterFramesRight % 5) {
+            case 0:
+                changePic("resources/walkRight2.png");
+                System.out.println("walkLeft2");
+                //counterFramesRight = 0;
+                break;
+            case 1:
+                changePic("resources/standingRight.png");
+                System.out.println("standingLeft");
+                break;
+            case 2:
+                changePic("resources/walkRight1.png");
+                System.out.println("walkLeft1");
+                break;
+            case 3:
+                changePic("resources/walkRight1.png");
+                System.out.println("walkLeft1");
+                break;
+            case 4:
+                changePic("resources/walkRight2.png");
+                System.out.println("walkLeft1");
+                break;
+
         }
     }
 
@@ -207,26 +228,25 @@ public class Player {
             System.out.println("Y: " + rectangleHit.getY() + " H: " + rectangleHit.getHeight());
         }
 
-        switch (counterFramesLeft %3) {
+        switch (counterFramesLeft % 5) {
             case 0:
                 changePic("resources/walkLeft2.png");
-                System.out.println("walkLeft2");
-                counterFramesLeft = 0;
+                //counterFramesRight = 0;
                 break;
             case 1:
                 changePic("resources/standingLeft.png");
-                System.out.println("standingLeft");
                 break;
             case 2:
-                changePic("resources/walkLeft1.png");
-                System.out.println("walkLeft1");
+                changePic("resources/walkleft1.png");
                 break;
+            case 3:
+                changePic("resources/walkLeft1.png");
+                break;
+            case 4:
+                changePic("resources/walkLeft2.png");
+                break;
+
         }
-
-
-
-
-
     }
 
     private java.awt.Rectangle changeScreenRect = new java.awt.Rectangle(0,370,50,100);
