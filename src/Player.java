@@ -8,8 +8,8 @@ import java.util.LinkedList;
 
 public class Player {
 
-    private static final int SPAWNX = 100;//300;
-    private static final int SPAWNY = 100;//410;
+    private static final int SPAWNX = 100;
+    private static final int SPAWNY = 100;
     private MyKeyboard keyboard;
     private Screen screen;
     private int counterVertical = 0;
@@ -56,7 +56,6 @@ public class Player {
         playerPic.draw();
         rectangleHit.draw();
 
-
     }
 
 
@@ -87,7 +86,6 @@ public class Player {
 
             hitTestRec = hitRectsList.get(i);
             hitTestJavaRec = hitJavaRectsList.get(i);
-            //hitTestJavaRec = hitRectsMap.get(hitTestRec);
 
             if(!hitTestJavaRec.intersects(rectangleHitJava) || !rectangleHitJava.intersects(hitTestJavaRec)){
                 rectangleHit.setColor(Color.BLACK);
@@ -250,13 +248,14 @@ public class Player {
     }
 
     private java.awt.Rectangle changeScreenRect = new java.awt.Rectangle(10,370,10,100);
-    private java.awt.Rectangle changeScreenLeft = new java.awt.Rectangle(768,350,10,100);
+    private java.awt.Rectangle changeScreenRight = new java.awt.Rectangle(768,350,10,100);
     private String currentBackground = "resources/rice-field.jpeg";
 
     public void tryChangeScreen() {
 
-        if(currentBackground.equals("resources/rice-pink-tree.jpeg")) {
-            changeScreenRect.setLocation(768,350);
+        if(currentBackground.equals("resources/testfield1.jpg")) {
+
+            changeScreenRect.setRect(450,512,200,10);
             isInCenterMap = false;
 
             if(changeScreenRect.intersects(rectangleHitJava)) {
@@ -275,10 +274,10 @@ public class Player {
             }
         } else if(currentBackground.equals("resources/rice-field.jpeg")) {
             isInCenterMap = true;
-            changeScreenRect.setLocation(10,370);
-            changeScreenLeft.setLocation(768,350);
+            changeScreenRect.setRect(10,370,10,100);
+            changeScreenRight.setLocation(768,350);
 
-            if(changeScreenLeft.intersects(rectangleHitJava)) {
+            if(changeScreenRight.intersects(rectangleHitJava)) {
                 screen.getBackground().load("resources/big-tree-enhanced.png");
                 currentBackground = "resources/big-tree-enhanced.png";
                 screen.getBackground().draw();
@@ -294,13 +293,13 @@ public class Player {
             }
 
             if(changeScreenRect.intersects(rectangleHitJava)) {
-                screen.getBackground().load("resources/rice-pink-tree.jpeg");
-                currentBackground = "resources/rice-pink-tree.jpeg";
+                screen.getBackground().load("resources/testfield1.jpg");
+                currentBackground = "resources/testfield1.jpg";
                 screen.getBackground().draw();
 
                 rectangleHit.delete();
                 playerPic.delete();
-                playerPic = new Picture(500,120,INITIALIMAGE);
+                playerPic = new Picture(320,160,INITIALIMAGE);
                 playerPic.grow(-200,-270);
                 playerPic.draw();
 
@@ -308,10 +307,10 @@ public class Player {
                 rectangleHitJava = new java.awt.Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
             }
         } else if(currentBackground.equals("resources/big-tree-enhanced.png")) {
-            changeScreenLeft.setLocation(10,370);
+            changeScreenRight.setLocation(10,370);
             isInCenterMap = false;
 
-            if(changeScreenLeft.intersects(rectangleHitJava)) {
+            if(changeScreenRight.intersects(rectangleHitJava)) {
                 screen.getBackground().load("resources/rice-field.jpeg");
                 currentBackground = "resources/rice-field.jpeg";
                 screen.getBackground().draw();
