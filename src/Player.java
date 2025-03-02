@@ -35,7 +35,7 @@ public class Player {
         rectangleHitJava = new java.awt.Rectangle(playerPic.getX(), playerPic.getY(), playerPic.getWidth(), playerPic.getHeight());
 
         playerPic.draw();
-        rectangleHit.draw();
+        //rectangleHit.draw();
 
     }
 
@@ -68,7 +68,7 @@ public class Player {
 
         changePic("resources/goingUp.png");
 
-        if(checkLimits("up")) {
+        if(checkLimits("up") && playerPic.getHeight()> 12) {
 
             playerPic.translate(0, -5);
             rectangleHit.translate(0, -5);
